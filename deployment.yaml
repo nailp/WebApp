@@ -1,0 +1,7 @@
+version: '3'
+services:
+  webapp-prod:
+     image: imthiyazpalapra/docker_poc:$BUILD_NUMBER
+     container_name:
+     ports:
+        - "8080:80"
