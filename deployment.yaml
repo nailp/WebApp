@@ -1,7 +1,21 @@
-version: '3'
-services:
-  webapp-prod:
-     image: imthiyazpalapra/docker_poc:$BUILD_NUMBER
-     container_name:
-     ports:
-        - "8080:80"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployment
+  labels:
+    app: tomcat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcat
+        image: imthiyazpalapra/dockerpoc:${BUILD_NUMBER}
+        ports:
+        - containerPort: 8080
