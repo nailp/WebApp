@@ -1,11 +1,20 @@
-kind: Service
-apiVersion: v1
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: tomcat-service
+  name: tomcat-deployment
 spec:
   selector:
-    app: tomcat
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+    matchLabels:
+      app: tomcat
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tomcat
+    spec:
+      containers:
+      - name: tomcatprodweb
+        image: "imthiyazpalapra/dockerpoc:58"
+        env:
+        - name: "PORT"
+          value: "8080"

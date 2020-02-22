@@ -15,7 +15,7 @@ spec:
         app: tomcat
     spec:
       containers:
-      - name: tomcat
-        image: imthiyazpalapra/dockerpoc:${BUILD_NUMBER}
+      - name: tomcatprodweb
+        image: imthiyazpalapra/dockerpoc:58
         ports:
         - containerPort: 8080
